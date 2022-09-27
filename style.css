@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 18px;
+    font-style: normal;
+}
+
+body {
+    background: #E5E5E5;
+}
+
+.container {
+    width: 375px;
+    background: #f4f4f4;
+    margin: 0 auto;
+    margin-top: 100px;
+        
+}
+
+header {
+    background: #1B83E2;
+    height: 66px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #F4F4F4;
+    text-align: center;
+    padding-top: 25px;
+}
+
+main {
+    padding: 24px;
+}
+
+label {
+    font-size: 14px;
+    color: #777777;
+}
+
+select {
+    background: #FFFFFF;
+    border: 1px solid #BBBBBB;
+    border-radius: 4px;
+    width: 100%;
+    height: 48px;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    padding-left: 16px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+    margin-top: 6px;
+    margin-bottom: 24px;
+}
+
+input {
+    width: 100%;
+    height: 48px;
+    background: #FFFFFF;
+    border: 1px solid #BBBBBB;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    outline: none;
+    padding-left: 16px;
+    font-size: 18px;
+}
+
+button {
+    width: 100%;
+    height: 48px;
+    background: #1B83E2;
+    border-radius: 25px;
+    cursor: pointer;
+    border: none;
+    font-weight: 700;
+    color: #F4F4F4;
+    margin-top: 24px;
+    margin-bottom: 36px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    opacity: 0.7;
+}
+
+section {
+    width: 100%;
+    border: 1px solid #1B83E2;
+    border-radius: 4px;
+}
+
+.currency-container {
+    text-align: center;
+    padding: 10px;
+}
+
+.currency-name {
+    color: #777777;
+}
+
+.currency-value {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 18px;
+    color: #1B83E2;
+}
+
+.arrow-img {
+    margin: 15px auto;
+    display: block;
+}
+
+footer {
+    width: 100%;
+    font-size: 14px;
+    color: #777777;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #1B83E2;
+}
+
+a:hover {
+    text-decoration: underline;
+}
