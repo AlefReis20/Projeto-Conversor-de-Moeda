@@ -2,24 +2,22 @@ const button = document.getElementById('convert-button')
 const firstSelect = document.getElementById('first-currency-select')
 const secondSelect = document.getElementById('second-currency-select')
 
-const dolarToReal = 5.39
-const euroToReal = 5.19
-const realToBitcoin = 0.0000093
 
-const euroToDolar = 1.02
-const dolarToBitcoin = 0.000051
-
-const euroToBitcoin = 0.000050
-
-const bitcoinToReal = 104726.95
-const bitcoinToDolar = 19404.30
-const bitcoinToEuro = 19840.61
-
-
-const convertValues = () => {
+const convertValues  = async () => {
     const inputCurrency = document.getElementById('input-currency').value
     const currencyValueText1 = document.getElementById('currency-value-text1')
     const currencyValueText2 = document.getElementById('currency-value-text2')
+
+    const data = await fetch ("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL,BRL-USD,BRL-EUR,BTC-USD,BTC-EUR,EUR-USD").then(response => response.json())
+
+    const dolarToReal = data.USDBRL.bid
+    const euroToReal = data.EURBRL.bid
+    const euroToDolar = data.EURUSD.bid
+    const bitcoinToReal = data.BTCBRL.bid
+    const bitcoinToDolar = data.BTCUSD.bid
+    const bitcoinToEuro = data.BTCEUR.bid
+
+    console.log(data)
 
     if (firstSelect.value === 'R$ Real Brasileiro' && secondSelect.value === 'R$ Real Brasileiro') {
         alert('Para realizar a conversão, troque o tipo de moeda.')
@@ -59,7 +57,7 @@ const convertValues = () => {
         currencyValueText2.innerHTML = new Intl.NumberFormat('de-DE', {
             style: 'currency',
             currency: 'BTC'
-        }).format(inputCurrency * realToBitcoin)
+        }).format(inputCurrency / (bitcoinToReal * 1000))
     } 
 
 
@@ -90,7 +88,7 @@ const convertValues = () => {
         currencyValueText2.innerHTML = new Intl.NumberFormat('de-DE', {
             style: 'currency',
             currency: 'EUR'
-        }).format(inputCurrency * euroToDolar)
+        }).format(inputCurrency / euroToDolar)
     }
 
     if(firstSelect.value === 'US$ Dolar Americano' && secondSelect.value === 'Bitcoin') {
@@ -101,7 +99,7 @@ const convertValues = () => {
         currencyValueText2.innerHTML = new Intl.NumberFormat('de-DE', {
             style: 'currency',
             currency: 'BTC'
-        }).format(inputCurrency * dolarToBitcoin)
+        }).format(inputCurrency / (bitcoinToDolar * 1000))
     }
    
     if(firstSelect.value === '€ Euro' && secondSelect.value === '€ Euro') {
@@ -131,7 +129,7 @@ const convertValues = () => {
         currencyValueText2.innerHTML = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD'
-        }).format(inputCurrency / euroToDolar)
+        }).format(inputCurrency * euroToDolar)
     }
 
     if(firstSelect.value === '€ Euro' && secondSelect.value === 'Bitcoin') {
@@ -142,7 +140,7 @@ const convertValues = () => {
         currencyValueText2.innerHTML = new Intl.NumberFormat('de-DE', {
             style: 'currency',
             currency: 'BTC'
-        }).format(inputCurrency * euroToBitcoin)
+        }).format(inputCurrency / (bitcoinToEuro * 1000))
     }
 
     if(firstSelect.value === 'Bitcoin' && secondSelect.value === 'Bitcoin') {
@@ -161,7 +159,7 @@ const convertValues = () => {
         currencyValueText2.innerHTML = new Intl.NumberFormat('pt-BR', {
             style: 'currency',
             currency: 'BRL'
-        }).format(inputCurrency * bitcoinToReal)
+        }).format(inputCurrency * (bitcoinToReal * 1000))
     }
 
     if(firstSelect.value === 'Bitcoin' && secondSelect.value === 'US$ Dolar Americano') {
@@ -172,7 +170,7 @@ const convertValues = () => {
         currencyValueText2.innerHTML = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD'
-        }).format(inputCurrency * bitcoinToDolar)
+        }).format(inputCurrency * (bitcoinToDolar * 1000))
     }
 
     if(firstSelect.value === 'Bitcoin' && secondSelect.value === '€ Euro') {
@@ -183,7 +181,7 @@ const convertValues = () => {
         currencyValueText2.innerHTML = new Intl.NumberFormat('de-DE', {
             style: 'currency',
             currency: 'EUR'
-        }).format(inputCurrency * bitcoinToEuro)
+        }).format(inputCurrency * (bitcoinToEuro * 1000))
     }
 }
 
